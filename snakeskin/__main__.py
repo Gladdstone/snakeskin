@@ -1,4 +1,7 @@
-from cli import get_default_cli
+import sys
 
-snakeskin_cli = get_default_cli()
-print("cli objects created")
+from cli.clidriver import main
+
+
+if __name__ == "__main__":
+    sys.exit(main())
