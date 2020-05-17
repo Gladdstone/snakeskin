@@ -1,16 +1,40 @@
+from cli.arguments import Arguments
+
 class CommandParser:
 
-  def __init__(self, command_string):
-    self.command_string = command_string
+  def __init__(self):
+    self.raw_args = []
+    self.command_table = {}
 
-  def load_commands(self):
-    command_table = {}
-    
-    command_arr = self.command_string.split(" ")
+  def set_arg(self, raw_args):
+    self.raw_args = raw_args
+
+  def load_commands(self):    
+    if len(self.raw_args) < 1:
+      return  # TODO - error handler
+
+
+
     previous_cmd_marker = ""
-    for cmd in command_arr:
-      if cmd[0] == "-" and command_table.get(cmd) == None:
-        command_table[cmd] = ""   # TODO - updateable parameter class?
-        previous_cmd_marker = cmd
+    for cmd in self.raw_args:
+      if cmd[0] == "-" and self.command_table.get(cmd) == None:
+        arg = Arguments(self.get_command_name(cmd))
+        self.command_table[arg] = ""
+        previous_cmd_marker = arg
       else:
-        command_table[previous_cmd_marker] = cmd
+        self.command_table[previous_cmd_marker] = cmd
+
+    self.print_command_table()
+  
+  def get_command_name(self, command):
+    command_switch = {
+      "--help": "help",
+      "--name": "ami_name",
+      "--type": "type"
+    }
+
+    return command_switch.get(command)
+
+  def print_command_table(self):
+    for key in self.command_table:
+      print(key, "->", self.command_table[key])
