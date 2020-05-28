@@ -1,0 +1,17 @@
+NAME: Snakeskin CLI
+
+DESCRIPTION: A Python command-line tool for quickly creating Packer images
+
+SYNOPSIS: 
+    snake [options] <command> <subcommand> [parameters]
+
+    Use snake command help for information on a specific command. Use snake help topics to view a list of available topics. Optional parameters are shown in square brackets.
+
+OPTIONS:
+    --help
+    
+    Open the help menu
+
+    --version
+
+    Display the version of this tool

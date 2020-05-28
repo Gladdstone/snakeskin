@@ -30,7 +30,8 @@ class CommandParser:
     command_switch = {
       "--help": "help",
       "--name": "ami_name",
-      "--type": "type"
+      "--type": "type",
+      "--version": "version"
     }
 
     return command_switch.get(command)
