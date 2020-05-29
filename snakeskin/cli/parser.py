@@ -1,4 +1,5 @@
 from cli.arguments import Arguments
+from cli.commands.help.help import Help
 
 class CommandParser:
 
@@ -11,24 +12,30 @@ class CommandParser:
 
   def load_commands(self):    
     if len(self.raw_args) < 1:
-      return  # TODO - error handler
+      return  # TODO - error handler (invalid arg count error)
 
-
-
-    previous_cmd_marker = ""
     for cmd in self.raw_args:
-      if cmd[0] == "-" and self.command_table.get(cmd) == None:
-        arg = Arguments(self.get_command_name(cmd))
-        self.command_table[arg] = ""
-        previous_cmd_marker = arg
-      else:
-        self.command_table[previous_cmd_marker] = cmd
+      if cmd[0] != "-":
+        return
+      option = self.get_command(cmd)
+      if option == None:
+        return  # TODO - invalid option input error
+      self.command_table["options"] = option
+
+    # previous_cmd_marker = ""
+    # for cmd in self.raw_args:
+    #   if cmd[0] == "-" and self.command_table.get(cmd) == None:
+    #     arg = self.get_command(cmd)
+    #     self.command_table[arg] = ""
+    #     previous_cmd_marker = arg
+    #   else:
+    #     self.command_table[previous_cmd_marker] = cmd
 
     self.print_command_table()
   
-  def get_command_name(self, command):
+  def get_command(self, command):
     command_switch = {
-      "--help": "help",
+      "--help": Help(),
       "--name": "ami_name",
       "--type": "type",
       "--version": "version"

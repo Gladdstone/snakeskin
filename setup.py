@@ -3,7 +3,6 @@ from setuptools import setup, find_packages
 VERSION = "0.0"
 
 DEPENDENCIES = [
-  "unittest"
 ]
 
 with open("README.md", "r") as f:
