@@ -4,17 +4,22 @@ from cli.commands.help.help import Help
 class CommandParser:
 
   def __init__(self):
-    self.raw_args = []
+    self.__raw_args = []
     self.command_table = {}
 
-  def set_arg(self, raw_args):
-    self.raw_args = raw_args
+  @property
+  def raw_args(self):
+    return self.__raw_args
+
+  @raw_args.setter
+  def raw_args(self, args):
+    self.__raw_args = args
 
   def load_commands(self):    
-    if len(self.raw_args) < 1:
+    if len(self.__raw_args) < 1:
       return  # TODO - error handler (invalid arg count error)
 
-    for cmd in self.raw_args:
+    for cmd in self.__raw_args:
       if cmd[0] != "-":
         return
       option = self.get_command(cmd)

@@ -10,7 +10,7 @@ class SnakeskinCli():
     return self.__version__
 
   def process_input(self, args):
-    self.command_parser.set_arg(args)
+    self.command_parser.raw_args = args
     self.command_parser.load_commands()
   
 
