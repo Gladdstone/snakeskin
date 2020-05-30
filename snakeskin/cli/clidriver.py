@@ -12,6 +12,9 @@ class SnakeskinCli():
   def process_input(self, args):
     self.command_parser.raw_args = args
     self.command_parser.load_commands()
+
+    self.command_loader.command_table = self.command_parser.command_table
+    self.command_loader.execute_command_table()
   
 
 def main(args=None):
@@ -27,4 +30,4 @@ def get_default_cli():
   from cli.loader import CommandLoader
 
   return SnakeskinCli(command_parser=CommandParser(),
-      command_loader=CommandLoader("not implemented"))
+      command_loader=CommandLoader())

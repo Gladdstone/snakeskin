@@ -13,7 +13,7 @@ class Help(Command):
     return header
 
   def execute(self):
-    print(self.help)
+    print(self.help_content)
 
   def read_file(self):
     content = self.get_header()
