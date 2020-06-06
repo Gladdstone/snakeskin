@@ -3,4 +3,5 @@ SnakeskinCLI
 ----
 Command Line Interface for Packer image builder tool
 """
-__version__ = "0.0"
+import pkg_resources
+pkg_resources.declare_namespace(__name__)

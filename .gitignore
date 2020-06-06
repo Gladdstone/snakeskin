@@ -1,2 +1,5 @@
+build/
+dist/
 env/
 __pycache__/
+snakeskin_cli.egg-info/
