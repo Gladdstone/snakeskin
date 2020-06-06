@@ -1,6 +1,6 @@
 import os
 
-from cli.commands.command import Command
+from snakeskin.cli.commands.command import Command
 
 class Help(Command):
 

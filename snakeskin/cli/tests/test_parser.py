@@ -1,6 +1,6 @@
 import unittest
-from cli.parser import CommandParser
-from cli import get_default_cli
+from snakeskin.cli.parser import CommandParser
+from snakeskin.cli import get_default_cli
 
 class TestParser(unittest.TestCase):
 

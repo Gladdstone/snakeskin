@@ -1,5 +1,5 @@
-from cli.arguments import Arguments
-from cli.commands.help.help import Help
+from snakeskin.cli.arguments import Arguments
+from snakeskin.cli.commands.help.help import Help
 
 class CommandParser:
 

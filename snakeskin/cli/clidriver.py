@@ -26,8 +26,8 @@ def main(args=None):
   snakeskin_cli.process_input(args)
 
 def get_default_cli():
-  from cli.parser import CommandParser
-  from cli.loader import CommandLoader
+  from snakeskin.cli.parser import CommandParser
+  from snakeskin.cli.loader import CommandLoader
 
   return SnakeskinCli(command_parser=CommandParser(),
       command_loader=CommandLoader())
